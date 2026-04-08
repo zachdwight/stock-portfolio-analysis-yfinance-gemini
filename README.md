@@ -4,6 +4,7 @@ This Python script allows you to analyze your stock portfolio, calculate key met
 
 ## DISCLAIMER
 <small>
+    
 **This tool is NOT financial advice.** 
 
 The trade recommendations and analysis provided are AI-generated suggestions based on technical indicators and news sentiment. They should never be used as the sole basis for investment decisions.
