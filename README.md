@@ -12,7 +12,7 @@ This Python script allows you to analyze your stock portfolio, calculate key met
 - **Never invest capital you cannot afford to lose** - past performance does not guarantee future results
 - **Understand the risks** - market conditions change rapidly, and recommendations may become outdated
 
-The creators of this tool assume no responsibility for any financial losses resulting from use of these recommendations.
+The creators of this acdademic/research project/repo assume no responsibility for any financial losses resulting from use of these recommendations.
 
 ## 🎯 Key Features
 
