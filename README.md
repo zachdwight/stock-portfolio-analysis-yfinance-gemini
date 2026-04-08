@@ -1,0 +1,176 @@
+# Enhanced Portfolio Analysis Tool with News, Sentiment & Trade Recommendations
+
+This Python script allows you to analyze your stock portfolio, calculate key metrics like Beta and Dividend Yield, and generate **AI-powered trade recommendations** based on technical indicators and market sentiment. It fetches real-time stock data using the `yfinance` library and generates a comprehensive PDF report with actionable insights.
+
+## 🎯 Key Features
+
+### Core Portfolio Analysis
+- Real-time stock data from Yahoo Finance
+- Portfolio metrics: Beta, Dividend Yield, Market Capitalization analysis
+- Professional PDF report generation
+
+### 🆕 News-Driven Market Analysis
+- Fetch latest financial and political news using NewsAPI
+- **Dual AI Model Support**: Use Claude (Anthropic) or Gemini (Google) for analysis
+- Market sentiment analysis (Bullish/Neutral/Bearish probability)
+- Sector-specific implications (Tech, Finance, Healthcare, Energy)
+
+### 🆕 Technical + Sentiment-Based Trade Recommendations
+- **Daily Trade Recommendations** (1-3 day horizon): Quick trading opportunities
+- **Weekly Trade Recommendations** (5-14 day horizon): Swing trading setups
+- Combines technical indicators (RSI, SMA, Momentum) with market sentiment
+- Confidence scoring for each recommendation
+- Support for both portfolio holdings and general market trades
+
+## 📊 PDF Report Contents (8 Pages)
+
+1. **Executive Summary** - Portfolio metrics, holdings breakdown, AI insights
+2. **Portfolio Allocation by Value** - Bar chart of holdings by value
+3. **Dividend Yields Comparison** - Individual yields vs portfolio average
+4. **Market Allocation** - Global market distribution (pie chart)
+5. **Beta Distribution** - Risk analysis across holdings (histogram)
+6. **10-Year Projection** - Portfolio growth forecast
+7. **Market Sentiment Analysis** - News-driven sentiment and key events *(NEW)*
+8. **Daily & Weekly Trade Recommendations** - Actionable trading signals *(NEW)*
+
+## 🔧 Prerequisites & Setup
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+Or manually:
+```bash
+pip install pandas numpy matplotlib seaborn yfinance google-generativeai anthropic requests
+```
+
+### 2. Configure API Keys
+
+This tool requires API keys for AI models and news analysis. Set these as environment variables:
+
+```bash
+# For Claude (Anthropic) - Required for trade recommendations
+export ANTHROPIC_API_KEY="your-anthropic-api-key"
+
+# For Gemini (Google) - Alternative to Claude
+export GOOGLE_API_KEY="your-gemini-api-key"
+
+# For News Analysis (Optional but recommended)
+export NEWSAPI_KEY="your-newsapi-key"
+```
+
+**Get your API keys:**
+- [Anthropic Claude API](https://console.anthropic.com/) - Free tier available
+- [Google Gemini API](https://makersuite.google.com/app/apikey) - Free tier available
+- [NewsAPI.org](https://newsapi.org/) - Free tier includes 100 requests/day
+
+### 3. Select Your AI Model
+
+Set the AI model preference (default is Claude):
+```bash
+export AI_MODEL="claude"  # or "gemini"
+```
+
+## 📝 How to Use
+
+### 1. Update Your Portfolio
+Edit `stock_portfolio_summarizer.py` and modify the `portfolio_input` dictionary:
+
+```python
+portfolio_input = {
+    'AAPL': {'SharesOwned': 10},
+    'MSFT': {'SharesOwned': 25},
+    'TSLA': {'SharesOwned': 5},
+    # Add your holdings...
+}
+```
+
+### 2. Run the Script
+```bash
+python stock_portfolio_summarizer.py
+```
+
+### 3. View Results
+- **Console Output**: Portfolio summary and recommendation summary
+- **PDF Report**: `Portfolio_Analysis_Report.pdf` (8 pages with charts and analysis)
+
+## 📤 Output
+
+The script generates:
+
+1. **Console Output**:
+   - Portfolio summary with key metrics
+   - Individual holdings breakdown
+   - Market sentiment analysis summary
+   - Trade recommendation count
+
+2. **PDF Report** (`Portfolio_Analysis_Report.pdf`):
+   - 8-page professional report with charts and analysis
+   - Market sentiment dashboard (NEW)
+   - Daily trade recommendations with confidence scores (NEW)
+   - Weekly trade recommendations for swing trading (NEW)
+   - Full portfolio analysis and projections
+
+## 🎯 Understanding Trade Recommendations
+
+### Signal Types
+- **BUY**: Stock is oversold (RSI < 30) OR showing bullish momentum + positive market sentiment
+- **SELL**: Stock is overbought (RSI > 70) OR showing bearish momentum + negative market sentiment
+- **HOLD**: Stock in neutral territory with no strong technical signals
+
+### Confidence Score
+- 0-60%: Weak signal (use with caution)
+- 60-75%: Moderate signal (confirm with other analysis)
+- 75-90%: Strong signal (good entry point)
+- 90%+: Very strong signal (multiple confirmations)
+
+### Technical Indicators Used
+- **RSI (Relative Strength Index)**: Momentum oscillator measuring overbought/oversold conditions
+- **SMA (Simple Moving Average)**: 20 and 50-day moving averages for trend analysis
+- **Momentum**: 5-day and 20-day price change percentage
+- **Market Sentiment**: Based on news analysis using AI
+
+## ⚠️ Important Notes
+
+### Data & Performance
+- **Internet Connection**: Required for real-time Yahoo Finance data and news API calls
+- **API Rate Limits**: Yahoo Finance and NewsAPI have rate limits; script includes delays to avoid blocking
+- **Data Availability**: Some tickers may lack complete data (dividend yield, beta); script handles gracefully
+
+### Analysis Limitations
+- **Trade Recommendations**: AI-generated suggestions only; NOT financial advice. Always conduct your own research.
+- **News Sentiment**: Based on selected articles; may not capture all market factors
+- **Technical Indicators**: Lag indicators; combine with other analysis methods
+- **Projections**: 10-year forecast assumes constant 10% growth (simplified model)
+
+### Risk Management
+- **Position Sizing**: Recommendations represent ideas only; never risk capital you can't afford to lose
+- **Stop-Loss Orders**: Use stop-losses to manage downside risk
+- **Diversification**: Don't concentrate trades in single stocks
+- **Continuous Monitoring**: Market conditions change; re-run analysis regularly
+
+## 📚 Configuration Options
+
+Edit the top of `stock_portfolio_summarizer.py` to customize:
+
+```python
+AI_MODEL = "claude"                    # "claude" or "gemini"
+NEWSAPI_KEY = os.getenv("NEWSAPI_KEY", "")
+ENABLE_NEWS_ANALYSIS = True            # Fetch and analyze news
+ENABLE_TRADE_RECOMMENDATIONS = True    # Generate trade signals
+TREND_LOOKBACK_DAYS = 60              # Historical data window (days)
+```
+
+## 🤝 Contributing
+
+Feel free to fork, modify, and improve this tool. Suggestions for enhancements:
+- Add more technical indicators (MACD, Bollinger Bands, etc.)
+- Integrate additional news sources
+- Add backtesting framework
+- Create real-time alerting system
+- Build REST API wrapper
+
+## 📄 License
+
+MIT License - See LICENSE file for details
