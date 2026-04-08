@@ -2,6 +2,18 @@
 
 This Python script allows you to analyze your stock portfolio, calculate key metrics like Beta and Dividend Yield, and generate **AI-powered trade recommendations** based on technical indicators and market sentiment. It fetches real-time stock data using the `yfinance` library and generates a comprehensive PDF report with actionable insights.
 
+## ⚠️ IMPORTANT DISCLAIMER
+
+**This tool is NOT financial advice.** The trade recommendations and analysis provided are AI-generated suggestions based on technical indicators and news sentiment. They should never be used as the sole basis for investment decisions.
+
+**You must:**
+- **Consult a licensed financial advisor or investment professional** before making any trading or investment decisions
+- **Conduct your own thorough due diligence** - research each company, understand market conditions, and verify all analysis independently
+- **Never invest capital you cannot afford to lose** - past performance does not guarantee future results
+- **Understand the risks** - market conditions change rapidly, and recommendations may become outdated
+
+The creators of this tool assume no responsibility for any financial losses resulting from use of these recommendations.
+
 ## 🎯 Key Features
 
 ### Core Portfolio Analysis
